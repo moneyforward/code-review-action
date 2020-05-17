@@ -11,7 +11,10 @@ exports.postversion = async function postversion () {
 }
 
 exports['transpile:ncc'] = function ncc() {
-  return Command.execute('ncc', ['build', './src/index.ts', '-m']);
+  return Promise.all([
+    Command.execute('ncc', ['build', './src/index.ts', '-o', 'dist/main', '-ms']),
+    Command.execute('ncc', ['build', './src/action.ts', '-o', 'dist/action', '-m']),
+  ]);
 }
 
 exports['lint:eslint'] = function eslint() {
