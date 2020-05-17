@@ -1,13 +1,13 @@
 {
-  "name": "code-review-action",
+  "name": "@moneyforward/code-review-action",
   "version": "0.0.0",
   "description": "Analyze code statically in Github actions",
-  "main": "dist/index.js",
+  "main": "dist/main/index.js",
   "scripts": {
     "test": "gulp test",
-    "version": "gulp clean build && git add dist",
+    "version": "gulp clean build && git add dist/action",
     "postversion": "gulp postversion",
-    "start": "gulp build && node dist/index.js"
+    "start": "gulp build && node dist/action/index.js"
   },
   "repository": {
     "type": "git",
@@ -19,7 +19,6 @@
     "code review",
     "static code analysis"
   ],
-  "private": true,
   "author": "Money Forward, Inc.",
   "license": "MIT",
   "bugs": {
@@ -27,11 +26,11 @@
   },
   "homepage": "https://github.com/moneyforward/code-review-action#readme",
   "dependencies": {
-    "@moneyforward/sca-action-core": "^0.1.9",
-    "@moneyforward/stream-util": "0.0.2"
+    "@moneyforward/sca-action-core": "^0.1.10"
   },
   "devDependencies": {
     "@moneyforward/command": "0.0.6",
+    "@moneyforward/stream-util": "0.0.2",
     "@types/chai": "^4.2.11",
     "@types/mocha": "^7.0.2",
     "@types/node": "^13.13.6",
