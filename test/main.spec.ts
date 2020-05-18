@@ -16,7 +16,7 @@ describe('action', () => {
       GITHUB_BASE_REF: 'HEAD',
       GITHUB_SHA: 'HEAD',
     };
-    sinon.replace(global.process, 'env', Object.assign(env, global.process.env));
+    sinon.replace(global.process, 'env', Object.assign({}, global.process.env, env));
     sinon.replace(global.process, 'chdir', () => undefined);
     sinon.replace(global.console, 'log', () => undefined);
 
