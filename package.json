@@ -28,12 +28,9 @@
     "url": "https://github.com/moneyforward/code-review-action/issues"
   },
   "homepage": "https://github.com/moneyforward/code-review-action#readme",
-  "dependencies": {
-    "@moneyforward/sca-action-core": "^0.1.11"
-  },
+  "dependencies": {},
   "devDependencies": {
     "@moneyforward/command": "^0.1.0",
-    "@moneyforward/stream-util": "^0.1.0",
     "@types/chai": "^4.2.11",
     "@types/mocha": "^7.0.2",
     "@types/node": "^13.13.6",

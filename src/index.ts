@@ -1,5 +1,11 @@
 import util from 'util';
-import { AnalyzerConstructor, AnalyzerConstructorParameter } from '@moneyforward/sca-action-core';
+import { AnalyzerConstructor, AnalyzerConstructorParameter } from './analyzer';
+import { ReporterConstructor, ReporterRepository } from './reporter';
+import AnnotationReporter from './reporters/annotation-reporter';
+import NopReporter from './reporters/nop-reporter';
+
+export * as analyzer from './analyzer';
+export * as reporter from './reporter';
 
 const debug = util.debuglog('@moneyforward/code-review-action');
 
@@ -8,12 +14,16 @@ interface Action<T, U> {
 }
 
 export default class CodeReviewAction implements Action<string, Promise<number>> {
+  static createDefaultReporterRepository(): ReporterRepository {
+    return new ReporterRepository(AnnotationReporter, NopReporter);
+  }
+
   private readonly module: Promise<{ default: AnalyzerConstructor }>;
   private readonly files: string;
   private readonly args: AnalyzerConstructorParameter[];
   private readonly reporterTypeNotation: string | undefined;
 
-  constructor(analyzerType?: AnalyzerConstructor) {
+  constructor(analyzerType?: AnalyzerConstructor, private readonly reporterRepository = CodeReviewAction.createDefaultReporterRepository()) {
     if (analyzerType) {
       this.module = Promise.resolve({ default: analyzerType });
     } else {
@@ -31,9 +41,14 @@ export default class CodeReviewAction implements Action<string, Promise<number>>
   async execute(): Promise<number> {
     const module = await this.module;
     debug('%s', module);
-    const Analyzer = module.default;
+    const reporterRepository = this.reporterRepository;
+    const reporterTypeNotation = this.reporterTypeNotation;
+    class Analyzer extends module.default {
+      get Reporter(): ReporterConstructor {
+        return super.Reporter || reporterRepository.get(reporterTypeNotation);
+      }
+    }
     const analyzer = new Analyzer(...this.args);
-    analyzer.reporterTypeNotation = this.reporterTypeNotation;
     return await analyzer.analyze(this.files);
   }
 }
