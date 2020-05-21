@@ -8,11 +8,17 @@ Analyze code statically in Github actions
 
 Specify the analyzer plugin
 
-- [@moneyforward/code-review-action-brakeman-plugin](https://www.npmjs.com/package/@moneyforward/code-review-action-brakeman-plugin)
-- [@moneyforward/code-review-action-rubocop-plugin](https://www.npmjs.com/package/@moneyforward/code-review-action-rubocop-plugin)
-- [@moneyforward/code-review-action-rails_best_practices-plugin](https://www.npmjs.com/package/@moneyforward/code-review-action-rails_best_practices-plugin)
-- [@moneyforward/code-review-action-reek-plugin](https://www.npmjs.com/package/@moneyforward/code-review-action-reek-plugin)
-- [@moneyforward/code-review-action-misspell-plugin](https://www.npmjs.com/package/@moneyforward/code-review-action-misspell-plugin)
+- Brakeman: [@moneyforward/code-review-action-brakeman-plugin](https://www.npmjs.com/package/@moneyforward/code-review-action-brakeman-plugin)
+- Rubocop: [@moneyforward/code-review-action-rubocop-plugin](https://www.npmjs.com/package/@moneyforward/code-review-action-rubocop-plugin)
+- Rails Best Practices: [@moneyforward/code-review-action-rails_best_practices-plugin](https://www.npmjs.com/package/@moneyforward/code-review-action-rails_best_practices-plugin)
+- Reek: [@moneyforward/code-review-action-reek-plugin](https://www.npmjs.com/package/@moneyforward/code-review-action-reek-plugin)
+- Querly: [@moneyforward/code-review-action-querly-plugin](https://www.npmjs.com/package/@moneyforward/code-review-action-querly-plugin)
+- ESLint: [@moneyforward/code-review-action-eslint-plugin](https://www.npmjs.com/package/@moneyforward/code-review-action-jshint-plugin)
+- JSHint: [@moneyforward/code-review-action-jshint-plugin](https://www.npmjs.com/package/@moneyforward/code-review-action-eslint-plugin)
+- CoffeeLint: [@moneyforward/code-review-action-coffeelint-plugin](https://www.npmjs.com/package/@moneyforward/code-review-action-coffeelint-plugin)
+- stylelint: [@moneyforward/code-review-action-stylelint-plugin](https://www.npmjs.com/package/@moneyforward/code-review-action-stylelint-plugin)
+- Goodcheck: [@moneyforward/code-review-action-goodcheck-plugin](https://www.npmjs.com/package/@moneyforward/code-review-action-goodcheck-plugin)
+- misspell: [@moneyforward/code-review-action-misspell-plugin](https://www.npmjs.com/package/@moneyforward/code-review-action-misspell-plugin)
 
 ... and more
 
